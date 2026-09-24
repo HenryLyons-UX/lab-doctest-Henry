@@ -146,11 +146,7 @@ def max_num_4(a, b, c, d):
 
 
 def max_num_abs(a, b):
-    if a < 0:
-        a = a *-1
-    if b < 0:
-        b = b *-1
-    if a >= b:
+    if abs(a) >= abs(b):
         return a
     else:
         return b
@@ -175,7 +171,7 @@ def max_num_abs(a, b):
 
 
 def is_leap_year(n):
-    if n % 4 == 0 and n % 100 != 0:
+    if (n % 4 == 0 and n % 100 != 0) or n % 400 == 0:
         return True
     else:
         return False
@@ -205,7 +201,7 @@ def is_leap_year(n):
 
 
 def num_digits(n):
-    n = str(n)
+    n = str(abs(n))
     return len(n)
 
     '''
@@ -268,10 +264,13 @@ def factorial(n):
 
 
 def is_prime(n):
-    if n % n == 0 and n % 1 == 0:
-        return True
-    else:
+    if n < 2:
         return False
+    for i in range(2,n):
+        if n % i == 0:
+            return False
+    return True
+   
     '''
     Return True if n is prime, and False otherwise.
     Recall that a prime number is divisible only by itself and 1,
@@ -331,10 +330,11 @@ def fibonacci(n):
     list = []
     f0 = 0
     f1 = 1
+    fn = 0
     for i in range(n):
-     fn = f0 + f1
-     f0 = f1
-     f1 = fn
+        fn = f0 + f1
+        f0 = f1
+        f1 = fn
     return fn
         
         
@@ -532,6 +532,8 @@ def funny_sum(a, b, c):
         return b
     elif b == c:
         return a
+    elif a==b and a==c:
+        return 0
     else: 
         return a + b + c 
        
@@ -587,6 +589,7 @@ def median(a, b, c):
 
 
 def sum_between(a, b):
+    sum = 0
     for i in range(a, b+1):
         sum += i
     return sum
@@ -619,7 +622,7 @@ def sum_between(a, b):
 ################################################################################
 
 def largest(xs):
-    return max(xs)
+    return max(xs, default = None)
     '''
     Return the largest element in a list.
 
@@ -635,6 +638,7 @@ def largest(xs):
     >>> largest([10])
     10
     >>> largest([])
+    None
     '''
 
 
