@@ -295,7 +295,7 @@ def is_prime(n):
 
 
 def is_perfect_square(n):
-    for i in range(n):
+    for i in range(n+1):
         if i * i == n:
             return True
     else:
@@ -335,7 +335,7 @@ def fibonacci(n):
         fn = f0 + f1
         f0 = f1
         f1 = fn
-    return fn
+    return f0
         
         
 
@@ -532,7 +532,7 @@ def funny_sum(a, b, c):
         return b
     elif b == c:
         return a
-    elif a==b and a==c:
+    elif a==b and b==c:
         return 0
     else: 
         return a + b + c 
@@ -590,6 +590,9 @@ def median(a, b, c):
 
 def sum_between(a, b):
     sum = 0
+    if a >b:
+        a = b
+        b = a
     for i in range(a, b+1):
         sum += i
     return sum
@@ -663,7 +666,7 @@ def last_element(xs):
 
 
 def last_element_list(xs):
-    newList = [xs[-1]]
+    newList = [xs[-1:]]
     return newList
     '''
     Return a list containing only the last element.
