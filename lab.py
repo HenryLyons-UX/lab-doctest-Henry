@@ -526,16 +526,16 @@ def love6(a, b):
 
 
 def funny_sum(a, b, c):
-    if a == b:
+    if a == b and b == c:
+        return 0
+    elif a == b:
         return c
     elif a == c:
         return b
     elif b == c:
         return a
-    elif a==b and b==c:
-        return 0
-    else: 
-        return a + b + c 
+    else:
+        return a + b + c
        
     '''
     Return the sum of the input values.
@@ -591,8 +591,7 @@ def median(a, b, c):
 def sum_between(a, b):
     sum = 0
     if a >b:
-        a = b
-        b = a
+        a, b = b, a
     for i in range(a, b+1):
         sum += i
     return sum
@@ -666,7 +665,7 @@ def last_element(xs):
 
 
 def last_element_list(xs):
-    newList = [xs[-1:]]
+    newList = xs[-1:]
     return newList
     '''
     Return a list containing only the last element.
